@@ -55,8 +55,8 @@ jobs:
               to_process.append(filename)
             else:
               file_content = open(expected[-1]).read()
-              checksum_match = re.search("^definition_checksum: (\w+)$", file_content, re.M)
-              usercount_match = re.search("^total_user_count: (\d+)$", file_content, re.M)
+              checksum_match = re.search(r"^definition_checksum: (\w+)$", file_content, re.M)
+              usercount_match = re.search(r"^total_user_count: (\d+)$", file_content, re.M)
               if not checksum_match or checksum_match.group(1) != all_presets[preset]['definition_checksum'] or not usercount_match or usercount_match.group(1) == '0':
                 to_process.append(filename)
             for name, content in GENERATED.items():
